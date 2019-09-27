@@ -1,17 +1,19 @@
 const express = require('express')
+const DevController = require('./controllers/DevController')
+const LikeController = require('./controllers/LikeController')
+const DislikeController = require('./controllers/DislikeController')
 
 const routes = express.Router()
 
-//GET, POST, PUT, DELETE
-routes.get('/', (req, res) => {
-    const query = req.query
-    return res.json({
-        name: query
-    })
-})
+routes.get('/devs', DevController.index)
 
-routes.post('/devs', (req, res) => {
-    return res.json(req.body)
-})
+//criar um dev
+routes.post('/devs', DevController.store)
+
+//likes
+routes.post('/devs/:devId/likes', LikeController.store)
+
+//dislikes
+routes.post('/devs/:devId/dislikes', DislikeController.store)
 
 module.exports = routes
