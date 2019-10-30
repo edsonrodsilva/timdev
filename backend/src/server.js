@@ -11,6 +11,7 @@ mongoose.connect('mongodb+srv://omnistack:omnistack@cluster0-cfj16.mongodb.net/o
     useUnifiedTopology: true
 })
 
+
 server.use(cors)
 server.use(express.json())
 server.use(routes)
